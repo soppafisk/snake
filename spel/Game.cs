@@ -29,8 +29,8 @@ namespace spel
 
         public void Init()
         {
-            WindowWidth = 50;
-            WindowHeight = 50;
+            WindowWidth = 70;
+            WindowHeight = 35;
 
             Console.SetWindowSize(WindowWidth, WindowHeight);
             Console.BufferHeight = WindowHeight;
@@ -67,7 +67,7 @@ namespace spel
 
             food = new Food(this);
 
-            Console.ReadKey(true);
+            PressEnter("Tryck enter för att starta");
 
         }
 
@@ -108,7 +108,6 @@ namespace spel
                     worm.Move();
                 }
             }
-            Console.ReadKey();
         }
 
         public void AddNewFood()
@@ -126,6 +125,26 @@ namespace spel
         {
             Console.SetCursorPosition(5, Height + 5);
             Console.WriteLine("Highscore: {0}", Highscore);
+        }
+
+        public void PressEnter(string message)
+        {
+            do
+            {
+                Feedback(message);
+                var input = Console.ReadKey(true);
+                if (input.Key == ConsoleKey.Enter)
+                {
+                    Feedback("                                   ");
+                    break;
+                }
+            } while (true);
+        }
+
+        public void Feedback(string message)
+        {
+            Console.SetCursorPosition(Width + 3, 4);
+            Console.WriteLine(message);
         }
     }
 }

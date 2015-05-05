@@ -94,6 +94,7 @@ namespace spel
                         lastPoint.Y = firstPoint.Y;
                         break;
                 }
+
                 WormArray.Insert(0, lastPoint);
                 firstPoint = WormArray[0];
                 PrintWorm();
@@ -136,8 +137,8 @@ namespace spel
 
         public void Die()
         {
-            Console.SetCursorPosition(10, 10);
-            Console.WriteLine("Du dog");
+
+            Game.PressEnter("Du dog. Enter för att spela igen");
             Dead = true;
 
             if (Game.Score > Game.Highscore)
