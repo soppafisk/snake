@@ -14,6 +14,9 @@ namespace spel
 
         public static int Width { get; set; }
         public static int Height { get; set; }
+
+        public static int Highscore { get; set; }
+        public static int Score { get; set; }
         
 
         public Worm worm;
@@ -56,8 +59,10 @@ namespace spel
             }
             Console.ResetColor();
 
-            
+            Score = 0;
 
+            UpdateScore();
+            UpdateHighscore();
             worm = new Worm(this);
 
             food = new Food(this);
@@ -70,6 +75,7 @@ namespace spel
         {
             while (!worm.Dead)
             {
+                UpdateScore();
                 food.PrintFood();
                 Thread.Sleep(100);
                 if (Console.KeyAvailable)
@@ -108,6 +114,18 @@ namespace spel
         public void AddNewFood()
         {
             food = new Food(this);
+        }
+
+        public void UpdateScore()
+        {
+            Console.SetCursorPosition(5, Height + 3);
+            Console.WriteLine("Score: {0}", Score);
+        }
+
+        public void UpdateHighscore()
+        {
+            Console.SetCursorPosition(5, Height + 5);
+            Console.WriteLine("Highscore: {0}", Highscore);
         }
     }
 }

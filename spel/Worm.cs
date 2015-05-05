@@ -123,6 +123,7 @@ namespace spel
                 // kolla om den äter
                 if (firstPoint.X == Game.food.X && firstPoint.Y == Game.food.Y)
                 {
+                    Game.Score += 1;
                     WormArray.Add(new Point(Game.food.X, Game.food.Y));
                     Game.AddNewFood();
                 }
@@ -138,6 +139,11 @@ namespace spel
             Console.SetCursorPosition(10, 10);
             Console.WriteLine("Du dog");
             Dead = true;
+
+            if (Game.Score > Game.Highscore)
+            {
+                Game.Highscore = Game.Score;
+            }
         }
     }
 }
