@@ -35,6 +35,7 @@ namespace spel
             Console.SetWindowSize(WindowWidth, WindowHeight);
             Console.BufferHeight = WindowHeight;
             Console.BufferWidth = WindowWidth;
+            Console.Title = "Worm";
             Console.Clear();
 
 
